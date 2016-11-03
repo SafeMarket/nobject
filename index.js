@@ -13,9 +13,19 @@ function Nobject (){
 }
 Nobject.ValueWrapper = ValueWrapper
 
-Nobject.prototype.set = function set (args, value){
-  
+Nobject.prototype.set = function set (){
+
+  let args
+  let value
   let values = this.values
+
+  if (_.isArray(arguments[0])) {
+    args = arguments[0]
+    value = arguments[1]
+  } else {
+    args = _.toArray(arguments)
+    value = args.pop()
+  }
 
   _.forEach(args, (arg, index) => {
     
@@ -33,8 +43,9 @@ Nobject.prototype.set = function set (args, value){
   }) 
 }
 
-Nobject.prototype.get = function get (args) {
+Nobject.prototype.get = function get () {
 
+  const args = _.isArray(arguments[0]) ? arguments[0] : _.toArray(arguments)
   let value = this.values
 
   _.forEach(args, (arg, index) => {

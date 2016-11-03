@@ -12,15 +12,13 @@ describe('Nobject', () => {
   })
 
   it('sould set and get correctly', () => {
-    const args = [1, '2', 'three']
-    nobject.set(args, values[0])
-    expect(nobject.get(args)).to.equal(values[0])
+    nobject.set([1, '2', 'three'], values[0])
+    expect(nobject.get([1, '2', 'three'])).to.equal(values[0])
   })
 
   it('sould set and get correctly in similar namespace', () => {
-    const args = [1, '2', 'threef']
-    nobject.set(args, values[1])
-    expect(nobject.get(args)).to.equal(values[1])
+    nobject.set(1, '2', 'threef', values[1])
+    expect(nobject.get([1, '2', 'threef'])).to.equal(values[1])
   })
 
   it('sould set and get correctly with different dimensions', () => {
