@@ -26,17 +26,23 @@ myNobject.get('a', 'a', 'a')
 // >> 1
 myNobject.get(['a', 'a', 'b'])
 // >> 2
+myNobject.get('x', 'y')
+// >> undefined
 
 // Crawl a nobject just like an array
 nobject.forEach((keys, value) => {
   console.log(keys, value)
-  if (/* done searching */)
+  if (/* done iterating */)
     return false
   else
     return true //or anything other than false
 })
 // >> ['a', 'a', 'a'] 1
 // >> ['a', 'a', 'b'] 2
+
+// Output JSON
+nobject.toJSON()
+// >> { "a" : { "a" : { "a" : 1, "b" : 2 } } }
 
 
 
