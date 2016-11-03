@@ -41,7 +41,7 @@ nobject.forEach((keys, value) => {
 // >> ['a', 'a', 'b'] 2
 
 // Output JSON
-nobject.toJSON()
+myNobject.toJSON()
 // >> { "a" : { "a" : { "a" : 1, "b" : 2 } } }
 
 

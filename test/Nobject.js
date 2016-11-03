@@ -63,4 +63,21 @@ describe('Nobject', () => {
     expect(nobject.toJSON()).to.equal(json)
   })
 
+  describe('readme examples', () => {
+
+    it('should work', () => {
+
+      const myNobject = new Nobject
+
+      myNobject.set(['a', 'a', 'a'], 1)
+      myNobject.set('a', 'a', 'b', 2)
+
+      expect(myNobject.get('a', 'a', 'a')).to.equal(1)
+      expect(myNobject.get(['a', 'a', 'b'])).to.equal(2)
+      expect(myNobject.get('x', 'y')).to.be.undefined
+      expect(myNobject.toJSON()).to.equal('{"a":{"a":{"a":1,"b":2}}}')
+
+    })
+  })
+
 })
