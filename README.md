@@ -30,7 +30,7 @@ myNobject.get('x', 'y')
 // >> undefined
 
 // Crawl a nobject just like an array
-nobject.forEach((keys, value) => {
+myNobject.forEach((keys, value) => {
   console.log(keys, value)
   if (/* done iterating */)
     return false
