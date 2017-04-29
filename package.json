@@ -1,6 +1,6 @@
 {
   "name": "nobject",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Nested javascript objects",
   "main": "index.js",
   "scripts": {
