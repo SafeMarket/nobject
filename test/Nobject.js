@@ -2,8 +2,8 @@ const Nobject = require('../')
 const expect = require('chai').expect
 
 describe('Nobject', () => {
-  
-  let nobject 
+
+  let nobject
   const values = ['my string', { myObject: true }, false, 3]
 
   it('should instatiate', () => {
@@ -61,6 +61,12 @@ describe('Nobject', () => {
   it('should toJSON', () => {
     const json = '{"1":{"2":{"three":"my string","threef":{"myObject":true}}},"2":{"b":false},"one":{"2":{"threef":3}}}'
     expect(nobject.toJSON()).to.equal(json)
+  })
+
+  it('should fromPojo', () => {
+    const json = '{"1":{"2":{"three":"my string","threef":{"myObject":true}}},"2":{"b":false},"one":{"2":{"threef":3}}}'
+    const pojo = JSON.parse(json)
+    expect(Nobject.fromPojo(pojo).toJSON()).to.equal(json)
   })
 
   describe('readme examples', () => {

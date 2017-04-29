@@ -28,7 +28,7 @@ Nobject.prototype.set = function set (){
   }
 
   _.forEach(args, (arg, index) => {
-    
+
     if (index === args.length - 1) {
       values[arg] = new ValueWrapper(value)
       return false
@@ -40,7 +40,7 @@ Nobject.prototype.set = function set (){
 
     values = values[arg]
 
-  }) 
+  })
 }
 
 Nobject.prototype.get = function get () {
@@ -90,6 +90,25 @@ Nobject.prototype.forEach = function forEach (doForEach) {
 
 Nobject.prototype.toJSON = function(){
   return JSON.stringify(this.values)
+}
+
+function crawlPojo(pojo, keys, callback) {
+  _.forEach(pojo, (value, key) => {
+    const _keys = keys.slice(0).concat([key])
+    if (value.constructor.name === 'Object') {
+      crawlPojo(value, _keys, callback)
+    } else {
+      callback(_keys, value)
+    }
+  })
+}
+
+Nobject.fromPojo = function(pojo) {
+  const nobject = new Nobject
+  crawlPojo(pojo, [], (keys, value) => {
+    nobject.set(keys, value)
+  })
+  return nobject
 }
 
 module.exports = Nobject
